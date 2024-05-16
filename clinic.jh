@@ -1,0 +1,106 @@
+
+entity Person {
+    id Long,
+    firstName String,
+    lastName String,
+    cin String,
+    phone String,
+    birthDate Instant,
+    birthPlace String,
+    createdAt LocalDate,
+    modifiedAt LocalDate,
+    createdBy String,
+    modifiedBy String
+}
+
+entity Address{
+	id Long
+    idAddress Long,
+    address String,
+    street String,
+    city String,
+    zipCode String,
+    country String,
+    createdAt LocalDate,
+    modifiedAt LocalDate,
+    createdBy String,
+    modifiedBy String
+}
+
+entity Patient {
+    idPatient Long
+}
+
+entity Doctor {
+    idDoctor Long
+}
+
+entity Record {
+    id Long,
+    idRecord Long,
+    reference String,
+    createdAt LocalDate,
+    modifiedAt LocalDate,
+    createdBy String,
+    modifiedBy String
+}
+
+entity Appointment {
+    id Long,
+    idAppointment Long,
+    date LocalDate,
+    createdAt LocalDate,
+    modifiedAt LocalDate,
+    createdBy String,
+    modifiedBy String
+}
+
+entity Attachment{
+	id Long,
+    idAttachment Long,
+    code String,
+    file Blob,
+    name String,
+    description String,
+    extension String,
+    createdAt LocalDate,
+    modifiedAt LocalDate,
+    createdBy String,
+    modifiedBy String
+}
+
+entity PatientAttachment{
+	id Long
+}
+
+entity DoctorAttachment{
+	id Long
+}
+
+entity RecordAttachment{
+	id Long
+}
+
+relationship OneToOne {
+    Person to Address
+    Agency to Address
+    Person to Patient
+    Person to Doctor
+}
+
+relationship ManyToOne {
+    Record to Patient
+    Record to Doctor
+    Candidacy to Candidate
+    Appointment to Record
+    PatientAttachment to Patient
+    PatientAttachment to Attachment
+    DoctorAttachment to Patient
+    DoctorAttachment to Attachment
+    RecordAttachment to Record
+    RecordAttachment to Attachment
+}
+
+
+
+
